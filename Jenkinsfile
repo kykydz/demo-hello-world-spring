@@ -13,6 +13,7 @@ pipeline {
                 checkout scm
             }
         }
+
         stage("Docker Build") {
             steps {
                 sh("docker build -t demo-hello-world .")
