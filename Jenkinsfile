@@ -1,6 +1,12 @@
 appName = "demo-hello-world"
 
 pipeline {
+    agent any
+
+    triggers {
+        pollSCM '* * * * *'
+    }
+    
     stages {
         stage("Checkout") {
             steps {
@@ -8,7 +14,9 @@ pipeline {
             }
         }
         stage("Docker Build") {
-            sh("docker build -t demo-hello-world .")
+            steps {
+                sh("docker build -t demo-hello-world .")
+            }
         }
     }
 }
