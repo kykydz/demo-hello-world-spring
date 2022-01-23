@@ -3,6 +3,8 @@ FROM maven:3.8-openjdk-11 as build
 WORKDIR /app
 COPY . .
 RUN mvn install
+RUN pwd
+RUN ls
 
 # Inject JAR 
 FROM openjdk:8-jdk-alpine
