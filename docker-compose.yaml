@@ -1,0 +1,12 @@
+# Version of docker-compose
+version: '3.1'
+
+# Depedency services that need to be run
+services:
+
+  demo-hello-world:
+    container_name: demo-hello-world
+    image: demo-hello-world:latest
+    restart: always
+    ports:
+      - "8087:8080"
