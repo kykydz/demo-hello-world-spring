@@ -8,7 +8,7 @@ pipeline {
             }
         }
         stage("Docker Build") {
-            sh("docker build -t demo-hello-world")
+            sh("docker build -t demo-hello-world .")
         }
     }
 }
