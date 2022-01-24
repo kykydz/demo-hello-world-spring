@@ -14,6 +14,6 @@ spec:
         path: "/api"
         backend:
           service:
-            name: hello-app
+            name: demo-hello-world-app
             port:
               number: 8080

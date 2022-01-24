@@ -1,29 +1,11 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  name: demo-hello-world-deployment
-  labels:
-    app: demo-hello-world-app
+  name: demo-hello-world-app-service
 spec:
-  replicas: 1
   selector:
-    matchLabels:
-      app: demo-hello-world-app
-  template:
-    metadata:
-      labels:
-        app: demo-hello-world-app
-    spec:
-      containers:
-      - name: server
-        image: "gcr.io/sinuous-tuner-303004/demo-hello-world"
-        ports:
-        - containerPort: 8080
-        readinessProbe:
-          initialDelaySeconds: 10
-          httpGet:
-            path: "/health"
-            port: 8080
-            httpHeaders:
-            - name: "Cookie"
-              value: "shop_session-id=x-readiness-probe"
+    app: demo-hello-world-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
