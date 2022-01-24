@@ -1,0 +1,18 @@
+steps:
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/sinuous-tuner-303004/demo-hello-world', '.']
+
+  # Push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/sinuous-tuner-303004/demo-hello-world']
+
+  - name: 'gcr.io/cloud-builders/gke-deploy'
+    args:
+    - run
+    - --filename=service.yaml
+    - --location=asia-southeast1-a
+    - --cluster=demo-cluster
+
+images:
+  - gcr.io/sinuous-tuner-303004/demo-hello-world
