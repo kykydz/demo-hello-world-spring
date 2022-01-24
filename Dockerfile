@@ -7,7 +7,6 @@ RUN mvn install
 # Inject JAR 
 FROM openjdk:8-jdk-alpine
 WORKDIR /app
-COPY --from=build /app/target/demo-hello-world.jar /app/app.jar
+COPY --from=build /app/target/demo-hello-world.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["sh", "-c"]
-CMD ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
