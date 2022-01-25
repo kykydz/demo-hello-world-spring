@@ -7,13 +7,13 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-  - host: "34.124.181.98.nip.io"
-    http:
+  # - host: "34.124.181.98.nip.io"
+  - http:
       paths:
       - pathType: Prefix
-        path: "/api"
+        path: "/"
         backend:
           service:
             name: demo-hello-world-app
             port:
-              number: 8080
+              number: 80
